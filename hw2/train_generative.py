@@ -23,11 +23,11 @@ def validation(binx, gaux, train, size):
 
 def get_class_prob(y_train):
 	print ('calculating the probability of the two classes...')
-	P_class0 = 0.0;
+	P_class1 = 0.0;
 	for i in range(y_train.shape[1]):
-		P_class0 += y_train[0][i]
-	P_class0 /= 32561
-	return P_class0, 1 - P_class0
+		P_class1 += y_train[0][i]
+	P_class1 /= 32561
+	return P_class1, 1 - P_class1
 
 def get_bin_prob(x_train_bin, y_train, label):
 	print ('calculating the bernouli distribution of the seclected features for class{}...'.format(label))
@@ -67,7 +67,7 @@ def main():
 	x_train_bin, x_train_gau, y_train, x_train_bin_v, x_train_gau_v, y_train_v = validation(x_train_bin, x_train_gau, y_train, size=20000)
 
 
-	P_class0 , P_class1 = get_class_prob(y_train)
+	P_class1 , P_class0 = get_class_prob(y_train)
 
 	P_features_bin_0    = get_bin_prob(x_train_bin, y_train, 0)
 	P_features_bin_1    = get_bin_prob(x_train_bin, y_train, 1)
