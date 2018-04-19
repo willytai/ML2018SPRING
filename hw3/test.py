@@ -2,7 +2,6 @@ import numpy as n
 import utility as utl
 import sys
 from keras.models import load_model
-from random import randint
 
 def transform(result):
 	tmp = []
