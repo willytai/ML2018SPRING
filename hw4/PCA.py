@@ -3,7 +3,9 @@ from skimage import io
 import pickle, sys
 
 # load images
-IC = io.imread_collection('Aberdeen/*')
+loadpath = str(sys.argv[1])+'/*'
+# print (loadpath); sys.exit()
+IC = io.imread_collection(loadpath)
 
 #################
 # caculate mean #
@@ -25,9 +27,7 @@ for image in IC:
 	print ('processing image', count); count += 1
 	img_vec.append((np.asarray(image) - mean).reshape(-1))
 img_vec = np.array(img_vec)
-# print (img_vec.shape)
-# img_vec = img_vec.T
-# print (img_vec.shape)
+img_vec = img_vec.T
 
 
 ###################
@@ -46,7 +46,7 @@ img_vec = np.array(img_vec)
 
 eigen_vec, eigen_val, notimportant = np.linalg.svd(img_vec, full_matrices=False)
 
-# print ("eignvector", eigen_vec.shape)
+print ("eignvector", eigen_vec.shape)
 
 # eigen_vec = eigen_vec[:, :100]
 
@@ -81,9 +81,9 @@ eigen_vec, eigen_val, notimportant = np.linalg.svd(img_vec, full_matrices=False)
 ##################
 # reconstruction #
 ##################
-savepath = sys.argv[2]
+savepath = 'reconstruction.jpg'
 dimension = 4
-img = io.imread(sys.argv[1])
+img = io.imread(sys.argv[2])
 img = img.reshape(-1)
 mean= mean.reshape(-1)
 u   = []
