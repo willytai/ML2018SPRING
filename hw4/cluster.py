@@ -69,7 +69,7 @@ from sklearn.preprocessing import StandardScaler
 same = 0
 diff = 0
 
-kmeans = pickle.load(open("parameters/kmeans.pkl", "rb")).labels_
+kmeans = pickle.load(open("kmeans.pkl", "rb")).labels_
 test = np.genfromtxt(sys.argv[2], skip_header=1, delimiter=',').astype(int)
 file = open(sys.argv[3], "w+")
 file.write("ID,Ans\n")
