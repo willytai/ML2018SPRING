@@ -85,7 +85,7 @@ def CreateModel():
 
 	model = Model([user, movie, age, occup], dense)
 
-	plot_model(model, to_file='network.png')
+	# plot_model(model, to_file='network.png')
 
 	return model
 
